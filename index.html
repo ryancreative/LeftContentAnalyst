@@ -7,18 +7,50 @@
     <title>10 Sec Maths Game</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="style.csss" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="script.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <h2>10 Sec Maths Game</h2>
-
-
+          <h2>quick mafs</h2>
         </div>
       </div>
+      <div class="row">
+        <div id="game-over" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>modal text</p> 
+              <button id="restart" class="btn" type="button">Another Round?</button>
+            </div>
+          </div>
+        <div class="col-xs-12 game">
+          <p>Seconds remaining:</p>
+          <h3 id="time-left"></h3>
+          <h4>Score: <span id="score"></span></h4>
+          <h1 id="equation"></h1>
+          <input id="user-input" type="number" />
+          <button id="start-button">Start!</button>
     </div>
   </body>
 </html>
+
+
+
+<!--
+      var gameOver = function() {
+    $('#game-over').style.display = "block";
+  };
+
+  var restartGame = function() {
+    $('#close, .#restart').on('click', function(){
+      $('#game-over').style.display = "none";
+    });
+    window.onclick = function(event){
+      if (event.target == modal) {
+        $('#game-over').style.display = "none";
+      };
+    }; 
+  }; 
+        -->
