@@ -89,6 +89,7 @@ button{
 }
 
 .modal {
+
   display: none;
   position: fixed;
   z-index: 1;
@@ -102,7 +103,8 @@ button{
 }
 
 .modal-content {
-  color: black;
+  background-image: url('/images/chalkboard.png');
+  color: #fff;
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
