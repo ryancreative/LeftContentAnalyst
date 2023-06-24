@@ -3,6 +3,7 @@ $(document).ready(function(){
   var interval;
   var timeLeft = 10;
   var score = 0;
+  var gameStarted = false;
   
   var updateTimeLeft = function (amount) {
     timeLeft += amount;
@@ -13,8 +14,28 @@ $(document).ready(function(){
     score += amount;
     $('#score').text(score);
   };
+
+  var gameOver = function() {
+    $('#game-over').css('display', 'block');
+  };
+
+  var restartGame = function() {
+    $('.close, #restart').on('click', function(){
+      $('#game-over').css('display', 'none');
+    });
+    $(window).on('click', function(event) {
+      if (event.target == $('#game-over')[0]) {
+        $('#game-over').css('display', 'none');
+      }
+    }); 
+  };
   
   var startGame = function () {
+    if (!gameStarted) {
+      gameStarted = true;
+      renderNewQuestion();
+    }
+    
     if (!interval) {
       if (timeLeft === 0) {
         updateTimeLeft(10);
@@ -25,6 +46,7 @@ $(document).ready(function(){
         if (timeLeft === 0) {
           clearInterval(interval);
           interval = undefined;
+          gameOver();
         }
       }, 1000);  
     }
@@ -58,6 +80,8 @@ $(document).ready(function(){
       updateScore(+1);
     }
   };
+
+  $('#start-button').on('click', startGame);
   
   $('#user-input').on('keyup', function () {
     startGame();
@@ -65,4 +89,5 @@ $(document).ready(function(){
   });
   
   renderNewQuestion();
+  restartGame();
 });
